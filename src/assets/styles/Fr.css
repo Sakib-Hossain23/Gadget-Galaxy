@@ -1,0 +1,311 @@
+.frc {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  background-color: #221f1f;
+  /*background-color: rgb(34 31 31 / var(--tw-bg-opacity));*/
+
+  color: white;
+}
+
+/* Fr Styling */
+.fr-container {
+  /*background-color: #121212;*/
+
+  background-color: #221f1f;
+
+  padding: 50px 20px;
+}
+
+.fr-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  /*flex-wrap: wrap;*/
+  max-width: 1200px;
+  margin: auto;
+  gap: 30px;
+
+  padding: 14px 37px;
+}
+
+@media (min-width: 1142px) {
+  .fr-container {
+    max-width: 1425px;
+
+    gap: 124px;
+  }
+}
+
+/* Section Styling */
+.fr-container h3 {
+  color: #ffa500;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  margin-bottom: 15px;
+  margin-top: 25px;
+}
+
+.fr-left,
+.fr-right {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* Left & Right Side */
+.fr-left {
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
+}
+
+.fr-right {
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
+}
+
+/* Contact & Store Locator */
+.phone-box,
+.store-location-box {
+  display: flex;
+  align-items: center;
+  background: #222;
+  padding: 15px;
+  border-radius: 14px;
+  margin-bottom: 14px;
+  transition: 0.3s ease-in-out;
+  box-shadow: 2px 2px 8px rgba(255, 165, 0, 0.2);
+}
+
+.phone-box:hover,
+.store-location-box:hover {
+  background: #333;
+  transform: scale(1.03);
+}
+
+.phone-box i,
+.store-location-box i {
+  font-size: 24px;
+  margin-right: 14px;
+  color: white;
+}
+
+.store-location-box small {
+  display: block;
+  font-size: 13px;
+  color: gray;
+}
+
+/* Social Media Icons */
+.social-media-links {
+  display: flex;
+  gap: 14px;
+  margin-top: 15px;
+}
+
+.social-media-links i {
+  background: #333;
+  padding: 14px;
+  border-radius: 50%;
+  font-size: 20px;
+  transition: 0.3s ease-in-out;
+  width: 40px; /* Set width */
+  height: 40px; /* Set height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-media-links i:hover {
+  background: #ffa500;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+/* App Store Links */
+.app-download-links {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  flex-wrap: nowrap; /* Prevent wrapping */
+}
+
+.app-download-links img {
+  width: auto;
+  height: auto;
+  max-width: 150px;
+  margin-top: 14px;
+  display: inline-block;
+  transition: 0.3s ease-in-out;
+  border-radius: 10px;
+
+  box-shadow: 0px 4px 10px rgba(255, 165, 0, 0.5);
+}
+
+.app-download-links img:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 4px 10px rgba(255, 165, 0, 0.5);
+}
+
+/* List Styling */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  /*margin-bottom: 12px;*/
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  font-weight: 500;
+}
+
+ul li:hover {
+  color: #ffa500;
+  transform: translateX(6px);
+  font-weight: 600;
+}
+
+/* Stay Connected */
+.locations small {
+  display: block;
+  /*color: gray;*/
+  /*margin-bottom: 8px;*/
+  margin-bottom: -11px;
+
+  font-size: 13px;
+}
+
+.locations span {
+  color: #ffa500;
+  /*font-weight: bold;*/
+
+  font-size: 14px;
+}
+
+/* Footer Bottom */
+.fr-bottom {
+  text-align: center;
+  margin-top: 30px;
+  /*background-color: #222;*/
+  /*color: #ffa500;*/
+  /*font-size: 16px;*/
+  /*padding: 15px 0;*/
+  /*border-radius: 10px;*/
+
+  background-color: #1b1b1b;
+  color: #fff;
+  font-size: 13px;
+  padding: 7px 0px;
+  border-radius: 0px;
+
+  box-shadow: 0px 4px 10px rgba(255, 165, 0, 0.2);
+  font-weight: 600;
+}
+
+@media (max-width: 953px) {
+  .fr-bottom {
+    margin-bottom: 64px;
+  }
+}
+
+.fr-bottom p {
+  margin: 0;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+  .fr-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  .fr-left,
+  .fr-right {
+    flex: 1;
+    min-width: 45%;
+  }
+
+  .social-media-links {
+    justify-content: left;
+  }
+
+  .app-download-links {
+    text-align: left;
+  }
+
+  .app-download-links img {
+    margin: 10px auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .fr-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .fr-left,
+  .fr-right {
+    min-width: 100%;
+    text-align: center;
+  }
+
+  .phone-box,
+  .store-location-box {
+    flex-direction: column;
+    text-align: center;
+    padding: 16px;
+  }
+
+  .phone-box i,
+  .store-location-box i {
+    margin-bottom: 8px;
+  }
+
+  .social-media-links {
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .social-media-links i {
+    padding: 12px;
+    font-size: 18px;
+  }
+
+  .app-download-links img {
+    width: 130px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fr-container {
+    padding: 25px;
+  }
+
+  .fr-left,
+  .fr-right {
+    min-width: 100%;
+    text-align: center;
+  }
+
+  .social-media-links {
+    gap: 8px;
+  }
+
+  .social-media-links i {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .app-download-links img {
+    width: 120px;
+  }
+}

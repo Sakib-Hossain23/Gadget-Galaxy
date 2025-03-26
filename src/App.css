@@ -1,0 +1,221 @@
+/* all font family*/
+
+[type="button"]:not(:disabled),
+[type="reset"]:not(:disabled),
+[type="submit"]:not(:disabled),
+button:not(:disabled),
+p,
+ul li,
+.locations small,
+.locations span,
+.specifications-table td,
+b,
+strong,
+.order-status.pending,
+.store-location-box small,
+.fr-container,
+.form-group label,
+.form-group input,
+.modal-agreement,
+.modal-forgot-password,
+.alert-message,
+.cart-table th,
+.cart-table td,
+.search-bar input,
+.cart-summary div,
+.promo-input,
+.continue-btn,
+.billing-details label,
+.billing-details input,
+.terms label,
+.item div,
+.coupon-input,
+.alert,
+.whatsapp-buttonn {
+  font-family: "Montserrat", sans-serif;
+}
+
+.product-details h3 {
+}
+
+/*search bar */
+
+@media (max-width: 767px) {
+  .form-control {
+    margin-bottom: 16px;
+  }
+
+  .btn.btn-primary {
+    margin-bottom: 16px;
+  }
+}
+
+/*searching item */
+
+/* General Search Modal Styling */
+.search-modal {
+  position: fixed;
+  top: 60px; /* Position below the search bar (adjust this value as needed) */
+  left: 0;
+  width: 100%;
+  height: calc(
+    100% - 60px
+  ); /* Adjust to take the full screen minus the search bar height */
+  background: rgba(0, 0, 0, 0.7); /* Keep the dark background */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align the modal to the top of the screen */
+  z-index: 1000;
+  overflow-y: auto; /* Allow scrolling if the content overflows */
+}
+
+.search-modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  top: 20px; /* Add space from the top to adjust the modal */
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.search-results {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.search-result-item img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .search-modal-content {
+    width: 80%;
+    max-width: 400px;
+  }
+
+  .search-result-item img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .close-modal {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-modal-content {
+    width: 90%;
+    max-width: 350px;
+  }
+
+  .search-result-item img {
+    width: 35px;
+    height: 35px;
+  }
+
+  .close-modal {
+    font-size: 1rem;
+  }
+
+  .search-result-item {
+    font-size: 0.9rem; /* Smaller text for smaller screens */
+  }
+}
+
+@media (max-width: 320px) {
+  .search-modal-content {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  .search-result-item img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .close-modal {
+    font-size: 1rem;
+  }
+}
+
+//
+
+/* Basic Modal Styling */
+.search-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #333;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.search-results {
+  list-style: none;
+  padding: 0;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+.search-result-item img {
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
+}
+
+.search-result-item div {
+  font-size: 16px;
+}

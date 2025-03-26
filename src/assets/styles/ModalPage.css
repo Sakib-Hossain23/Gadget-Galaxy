@@ -1,0 +1,698 @@
+/* General Styles */
+.modal-page-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fff;
+  /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
+  border-radius: 10px;
+  margin-top: 60px;
+  margin-bottom: 65px;
+}
+
+.go-back {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background: #f8d7da;
+  color: #721c24;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.go-back:hover {
+  background: #f5c6cb;
+}
+
+/* Layout */
+.content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.left-section,
+.right-section {
+  flex: 1;
+}
+
+.main-image {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.thumbnails {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.thumbnails img {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.thumbnails img.selected {
+  border: 2px solid orange;
+}
+
+/* Product Details */
+h2 {
+  font-size: 29px;
+  color: #333;
+}
+
+.price {
+  font-size: 1.5rem;
+  color: #28a745;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.options {
+  margin-top: 2px;
+}
+
+.option-button {
+  margin: 7px;
+  padding: 1px 5px;
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.option-button:hover {
+  /*background-color: #f1f1f1;*/
+  background-color: #ffedcc;
+}
+
+.quantity-controls {
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+  margin-top: 0rem;
+  justify-content: flex-start;
+}
+
+.quantity-button {
+  /*padding: -1rem;*/
+  border: 1px solid #ddd;
+  background: #f8f9fa;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/*.buy-button,
+.cart-button {
+  display: block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.buy-button:hover,
+.cart-button:hover {
+  background-color: #218838;
+}
+
+.cart-button {
+  background-color: #ffc107;
+}
+
+.cart-button:hover {
+  background-color: #e0a800;
+}*/
+
+.buy-button,
+.cart-button {
+  display: inline-block;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem; /* Added right margin to create space between buttons */
+  padding: 0.5rem 1rem;
+  background-color: #ff9800; /* New blue for the Buy button */
+  color: #fff;
+  border: none;
+  border-radius: 3px; /* Reduced border radius for a smaller feel */
+  cursor: pointer;
+  width: auto; /* Adjusted to prevent full-width buttons */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-align: center;
+}
+
+.buy-button:hover,
+.cart-button:hover {
+  background-color: #e68a00; /* Darker shade of blue for hover effect */
+  transform: scale(1.05); /* Slight scale effect on hover for emphasis */
+}
+
+.cart-button {
+  background-color: #fd7e14; /* New orange for Cart button */
+}
+
+.cart-button:hover {
+  background-color: #e67e00; /* Darker orange for hover effect */
+}
+
+/* Additional gap between the buttons and the surrounding content */
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem; /* Gap between elements */
+}
+
+/* Responsive Styles */
+@media (max-width: 565px) {
+  .content-wrapper {
+    flex-direction: column;
+  }
+
+  .left-section,
+  .right-section {
+    flex: none;
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .main-image {
+    width: 63%; /* Reduced size to make image smaller */
+    max-width: 500px; /* Max width for larger screens */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 70px;
+  }
+
+  .thumbnails {
+    margin-left: -13px;
+  }
+
+  .modal-page-container {
+    margin-top: 100px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .thumbnails {
+    margin-left: -60px;
+  }
+}
+
+/* alert 2 */
+
+/*.custom-alert {
+  position: fixed;
+  top: 10%;
+  right: 10%;
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1000;
+  transition: opacity 0.3s;
+}*/
+
+.success-alert {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.error-alert {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+@media (min-width: 950px) {
+  .error-alert {
+    margin-right: 71px;
+  }
+  .success-alert {
+    margin-right: 71px;
+  }
+}
+
+/*.alert-image {
+  width: 24px;
+  height: 24px;
+}
+
+.alert-message {
+  font-size: 14px;
+}
+
+*/
+
+/* Circle Color */
+
+.color-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.color-circle {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 8px;
+  border: 1px solid #ccc;
+}
+
+.option-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  /*border: 1px solid #ddd;
+  background: #f9f9f9;*/
+
+  border: 1px solid #fff;
+  background: #ececec;
+
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.option-button.selected {
+  /*border: 2px solid #007bff;
+  background: #e9f7ff;*/
+
+  /*border: 2px solid orange;*/
+
+  border: 1.3px solid orange;
+
+  background: #ffedcc;
+}
+
+@media (max-width: 950px) {
+  .option-button.selected {
+    border: 1px solid orange;
+  }
+}
+
+/*specifications*/
+
+/* Tabbed Section */
+.tabs-container {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.mt-5 {
+  margin-top: 1rem !important;
+}
+
+.tabs {
+  display: flex;
+  justify-content: start;
+  /*border-bottom: 2px solid #ddd;*/
+  padding-bottom: 0.5rem;
+
+  margin-bottom: 13px;
+  border-radius: 9px;
+}
+
+@media (max-width: 560px) {
+  .tabs {
+    justify-content: center;
+  }
+}
+
+.tab-button {
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  transition: color 0.3s, border-bottom 0.3s;
+}
+
+.tab-button:hover {
+  color: #7b68b1;
+}
+
+/*.tab-button.active {
+  
+
+  color: #000;
+  border-radius: 6px;
+  margin-top: 9px;
+
+  border-bottom: 2px solid #1f2937;
+}*/
+
+.tab-button.active {
+  color: #000;
+  border-radius: 6px;
+  margin-top: 9px;
+  position: relative; /* Required for positioning the pseudo-element */
+  text-decoration: none; /* Remove default underline */
+}
+
+.tab-button.active::after {
+  content: "";
+  position: absolute;
+  left: 50%; /* Start from the center */
+  bottom: 0px; /* Adjust this to control the distance of the underline from the text */
+  width: 75%; /* Adjust this to control the width of the underline */
+  height: 1.5px; /* Thickness of the underline */
+  background-color: orange; /* Color of the underline */
+  border-radius: 8px; /* Rounded corners for the underline */
+  transform: translateX(-50%); /* Center the pseudo-element */
+}
+
+.tab-button.text-gray-500 {
+  /*color: #6b7280;*/
+
+  color: #000000;
+  border-radius: 10px;
+  margin-top: 9px;
+}
+
+.tab-content {
+  padding: 1rem;
+  /*background-color: #f9f9f9;*/
+  background-color: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  /*border: 1px solid #dadada;*/
+}
+
+.specifications-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.specifications-table th,
+.specifications-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.specifications-table th {
+  background-color: #f4f4f4;
+  font-weight: 600;
+}
+
+.specifications-table td {
+  background-color: #fff;
+}
+
+.specifications-table td strong {
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tabs {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .tab-button {
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+
+  .tab-content {
+    padding: 1rem;
+  }
+
+  .specifications-table th,
+  .specifications-table td {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tab-button {
+    padding: 0.5rem;
+    font-size: 0.84rem;
+  }
+
+  .specifications-table th,
+  .specifications-table td {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .tab-content {
+    padding: 0.75rem;
+  }
+
+  h2 {
+    font-size: 25px;
+  }
+}
+
+.p-4 {
+  padding: 0.5rem !important;
+}
+
+/*whatsapp*/
+
+/* WhatsApp Section - Integrated */
+.whatsapp-section {
+  margin: 20px 0;
+  width: 100%;
+}
+
+/*.whatsapp-buttonn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 40%;
+  padding: 12px;
+  /*background-color: #25d366;*/
+/*background: linear-gradient(135deg, #25d366, #128c7e);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+}*/
+
+.whatsapp-buttonn:hover {
+  background-color: #128c7e;
+}
+
+.whatsapp-buttonn span {
+  font-size: 16px;
+}
+
+.whatsapp-chat-box {
+  width: 100%;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  margin-top: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+.whatsapp-header {
+  background-color: #075e54;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.whatsapp-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.whatsapp-info h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.whatsapp-info p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.close-chat {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+.whatsapp-message-box {
+  padding: 15px;
+}
+
+.whatsapp-message-box textarea {
+  width: 100%;
+  height: 100px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  resize: none;
+  font-family: inherit;
+  margin-bottom: 10px;
+  cursor: text;
+
+  font-family: "Montserrat", sans-serif;
+}
+
+.send-whatsapp-buttonn {
+  width: 100%;
+  padding: 12px;
+  /*background-color: #25d366;13c556*/
+
+  /*background-color: #0f995b;*/
+  background-color: #00b97e;
+
+  color: white;
+  border: none;
+  border-radius: 0 0 8px 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.send-whatsapp-buttonn:hover {
+  background-color: #128c7e;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .whatsapp-buttonn {
+    padding: 10px;
+    width: 60%;
+  }
+
+  .whatsapp-buttonn span {
+    font-size: 14px;
+  }
+
+  .whatsapp-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .whatsapp-section {
+    margin: 15px 0;
+  }
+
+  .whatsapp-buttonn span {
+    font-size: 13px;
+  }
+
+  .whatsapp-chat-box {
+    border-radius: 8px;
+  }
+}
+
+/*kk*/
+
+.whatsapp-buttonn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  /*padding: 10px;*/
+  padding: 7px;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 10px;
+  width: fit-content; /* Makes the button as small as possible based on content */
+  min-width: 80px; /* Ensures the button isn't too small */
+  max-width: 200px; /* Prevents it from stretching too much */
+  white-space: nowrap; /* Prevents text from wrapping */
+
+  /*font-size: 15px;*/
+  font-size: 13px;
+}
+
+/*.whatsapp-buttonn:hover {
+  background: #128c7e;
+}*/
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .whatsapp-buttonn {
+    min-width: 70px;
+    padding: 8px;
+    /*font-size: 14px;*/
+    font-size: 13px;
+  }
+}
+
+/*status stock*/
+
+/* For better button appearance when disabled */
+.out-of-stock-btn {
+  background-color: #f44336 !important;
+  color: white !important;
+  opacity: 0.7;
+}
+
+/* Animation for stock status */
+.stock-status {
+  transition: all 0.3s ease;
+}
+
+/*.stock-status.in-stock::before {
+  content: "✓ ";
+}
+
+.stock-status.out-of-stock::before {
+  content: "✗ ";
+}*/
