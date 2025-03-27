@@ -1,4 +1,3 @@
-// App.js
 import React, { useState } from "react";
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
@@ -15,16 +14,15 @@ import RlProducts from "./components/RlProducts";
 import Hero from "./components/Hero";
 import ScrollToTop from "./components/ScrollToTop";
 import DownFooter from "./components/DownFooter";
-import ModalPage from "./components/ModalPage"; // Import ModalPage
+import ModalPage from "./components/ModalPage";
 import Checkout from "./components/Checkout";
 import SearchModal from "./components/SearchModal";
 import RegisterModal from "./components/RegisterModal";
-import products from "./components/AllProducts"; // Import product data
+import products from "./components/AllProducts";
 import OrderHistory from "./components/OrderHistory";
 import Fr from "./components/Fr";
 import Blog from "./components/Blog";
 import Chatbot from "./components/Chatbot";
-
 import NotFound from "./components/NotFound";
 
 function App() {
@@ -33,6 +31,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const [wishlist, setWishlist] = useState([]);
 
   const addToCart = (newProduct) => {
     const existingProductIndex = cart.findIndex(
@@ -62,6 +61,14 @@ function App() {
     );
   };
 
+  const addToWishlist = (product) => {
+    setWishlist([...wishlist, product]);
+  };
+
+  const removeFromWishlist = (productId) => {
+    setWishlist(wishlist.filter((item) => item.id !== productId));
+  };
+
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -71,6 +78,7 @@ function App() {
       <ScrollToTop />
       <Navbar
         cart={cart}
+        wishlist={wishlist}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         setIsSearchModalOpen={setIsSearchModalOpen}
@@ -109,7 +117,15 @@ function App() {
         />
         <Route
           path="/product/:id"
-          element={<ModalPage addToCart={addToCart} />} // Route for ModalPage
+          element={
+            <ModalPage
+              addToCart={addToCart}
+              products={products}
+              addToWishlist={addToWishlist}
+              removeFromWishlist={removeFromWishlist}
+              wishlist={wishlist}
+            />
+          }
         />
         <Route
           path="/order-history"
@@ -117,9 +133,26 @@ function App() {
         />
         <Route
           path="/my-products"
-          element={<MyProducts addToCart={addToCart} />}
+          element={
+            <MyProducts
+              addToCart={addToCart}
+              addToWishlist={addToWishlist}
+              removeFromWishlist={removeFromWishlist}
+              wishlist={wishlist}
+            />
+          }
         />
-        <Route path="/products" element={<Products addToCart={addToCart} />} />
+        <Route
+          path="/products"
+          element={
+            <Products
+              addToCart={addToCart}
+              addToWishlist={addToWishlist}
+              removeFromWishlist={removeFromWishlist}
+              wishlist={wishlist}
+            />
+          }
+        />
       </Routes>
 
       {/* Search Modal */}
@@ -129,6 +162,10 @@ function App() {
           setIsSearchModalOpen={setIsSearchModalOpen}
           filteredProducts={filteredProducts}
           setSearchQuery={setSearchQuery}
+          addToCart={addToCart}
+          addToWishlist={addToWishlist}
+          removeFromWishlist={removeFromWishlist}
+          wishlist={wishlist}
         />
       )}
 
