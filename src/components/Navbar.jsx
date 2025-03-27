@@ -91,7 +91,7 @@ const Navbar = ({
               Gadget<span style={{ color: "orange" }}>s</span>
             </h1>
 
-            <p>Go Gadget</p>
+            <p>GoGadget</p>
           </div>
         </Link>
 
