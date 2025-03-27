@@ -81,11 +81,15 @@ const colorMap = {
   "Flora Green": "#5FA777",
 };
 
-const ModalPage = ({ addToCart }) => {
+const ModalPage = ({ addToCart, products }) => {
   const { id } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-  const product = location.state?.product;
+  const productFromState = location.state?.product;
+
+  // Find product from products array if not in location state
+  const product =
+    productFromState || products.find((p) => p.id === parseInt(id));
 
   // State declarations
   const [selectedImage, setSelectedImage] = useState("");
@@ -140,7 +144,7 @@ const ModalPage = ({ addToCart }) => {
         }). Can you tell me more about it?`
       );
     }
-  }, [product]);
+  }, [product, id]);
 
   // Update selected image based on color
   useEffect(() => {
