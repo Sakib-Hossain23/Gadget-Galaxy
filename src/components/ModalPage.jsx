@@ -139,7 +139,7 @@ const ModalPage = ({ addToCart, products }) => {
       }
 
       setWhatsAppMessage(
-        `Hi, I'm interested in the ${product.name}.Can you tell me more about it?`
+        `Hi, I'm interested in the ${product.name}. Can you tell me more about it?`
       );
     }
   }, [product, id]);
