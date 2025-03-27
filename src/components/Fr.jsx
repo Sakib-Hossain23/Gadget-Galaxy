@@ -84,7 +84,7 @@ const Fr = () => {
         </div>
       </div>
       <div className="fr-bottom">
-        <p>© 2025 Gadget Galaxy | All rights reserved</p>
+        <p>© 2025 GoGadget | All rights reserved</p>
       </div>
     </div>
   );
