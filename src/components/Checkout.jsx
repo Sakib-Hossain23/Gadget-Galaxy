@@ -512,13 +512,18 @@ const Checkout = ({ cart, updateCart, setOrderHistory }) => {
   };
 
   const generatePDF = () => {
+    // Create a unique filename with timestamp
+    const timestamp = new Date().getTime();
+    const fileName = `order_summary_${timestamp}.pdf`;
+
     const pdfContainer = document.createElement("div");
     pdfContainer.style.position = "absolute";
     pdfContainer.style.left = "-9999px";
-    pdfContainer.style.width = "794px";
+    pdfContainer.style.width = "794px"; // A4 width in pixels
     pdfContainer.style.padding = "20px";
     document.body.appendChild(pdfContainer);
 
+    // Format date and time
     const formattedTime = new Date().toLocaleString("en-US", {
       hour: "numeric",
       minute: "numeric",
@@ -528,98 +533,163 @@ const Checkout = ({ cart, updateCart, setOrderHistory }) => {
       day: "numeric",
     });
 
-    // Customer Information
-    const customerInfo = `
-      <div style="margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 20px;">
-        <h2 style="color: #333; margin-bottom: 10px;">Customer Information</h2>
-        <p><strong>Name:</strong> ${billingDetails.fullName}</p>
-        <p><strong>Email:</strong> ${billingDetails.email}</p>
-        <p><strong>Phone:</strong> ${billingDetails.phoneNumber}</p>
-        <p><strong>Address:</strong> ${billingDetails.address}</p>
-        <p><strong>Order Time:</strong> ${formattedTime}</p>
-      </div>
-    `;
-    pdfContainer.innerHTML = customerInfo;
+    // Generate HTML content
+    pdfContainer.innerHTML = `
+       <div style="font-family: Arial, sans-serif;">
+            <!-- Customer Information -->
+            <div style="margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px;">
 
-    // Order Summary Header
-    const orderHeader = `
-      <div style="margin-bottom: 20px;">
-        <h2 style="color: #333; margin-bottom: 10px;">Order Summary</h2>
-      </div>
-    `;
-    pdfContainer.innerHTML += orderHeader;
 
-    // Products Table
-    const productsTable = `
-      <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
-        <thead>
-          <tr style="background-color: #f5f5f5;">
-            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Product</th>
-            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Details</th>
-            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Quantity</th>
-            <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${cart
-            .map(
-              (product) => `
-            <tr>
-              <td style="border: 1px solid #ddd; padding: 8px;">
-                <div style="display: flex; align-items: center;">
-                  <img src="${product.image}" alt="${
-                product.name
-              }" style="width: 50px; height: 50px; margin-right: 10px; object-fit: contain;">
-                  <span>${product.name}</span>
+           <h1
+  style="
+    background: linear-gradient(135deg, #08ad74, #0ac987);
+    color: white;
+    margin: 0;
+    padding: 5px 0;
+    text-align: center;
+    font-weight: 800;
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(8, 173, 116, 0.3);
+    position: relative;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    border-radius: 3px;
+    margin-bottom: 10px;
+  "
+>
+  <span style="display: inline-block; position: relative; z-index: 2">
+    GoGad<span
+      style="
+        color: #e6fff2;
+        text-shadow: 0 0 8px rgba(230, 255, 242, 0.5);
+        font-weight: 900;
+      "
+      >g</span
+    >et
+  </span>
+  <span
+    style="
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      right: -50%;
+      bottom: -50%;
+      background: radial-gradient(
+        circle,
+        rgba(230, 255, 242, 0.2) 0%,
+        rgba(230, 255, 242, 0) 60%
+      );
+      transform: rotate(30deg);
+      z-index: 1;
+      animation: shine 3s infinite;
+    "
+  ></span>
+</h1>
+           
+                <h2 style="color: #333; margin-bottom: 10px;">Customer Information</h2>
+                <p><strong>Name:</strong> ${billingDetails.fullName}</p>
+                <p><strong>Email:</strong> ${billingDetails.email}</p>
+                <p><strong>Phone:</strong> ${billingDetails.phoneNumber}</p>
+                <p><strong>Address:</strong> ${billingDetails.address}</p>
+                <p><strong>Order Time:</strong> ${formattedTime}</p>
+            </div>
+
+            <!-- Order Summary -->
+            <div style="margin-bottom: 20px;">
+                <h2 style="color: #333; margin-bottom: 10px;margin-top: -5px;">Order Summary</h2>
+            </div>
+
+            <!-- Products Table -->
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                <thead>
+                    <tr style="background-color: #f5f5f5;">
+                        <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Product</th>
+                        <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Details</th>
+                        <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Quantity</th>
+                        <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${cart
+                      .map(
+                        (product) => `
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px;">
+                                <div style="display: flex; align-items: center;">
+                                    <img src="${product.image}" alt="${
+                          product.name
+                        }" 
+                                         style="width: 50px; height: 50px; margin-right: 10px; object-fit: contain;">
+                                    <span>${product.name}</span>
+                                </div>
+                            </td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">
+                                ${
+                                  product.selectedColor
+                                    ? `<p>Color: ${product.selectedColor}</p>`
+                                    : ""
+                                }
+                                ${
+                                  product.selectedStorage
+                                    ? `<p>Storage: ${product.selectedStorage}</p>`
+                                    : ""
+                                }
+                            </td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">${
+                              product.quantity
+                            }</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">BDT ${
+                              product.price
+                            }</td>
+                        </tr>
+                    `
+                      )
+                      .join("")}
+                </tbody>
+            </table>
+
+            <!-- Order Summary Footer -->
+            <div style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
+                <div style="max-width: 300px">
+
+                <div style="max-width: 300px;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <span><strong>Subtotal:</strong></span>
+                    <span>BDT ${calculateSubtotal()}</span>
                 </div>
-              </td>
-              <td style="border: 1px solid #ddd; padding: 8px;">
-                ${
-                  product.selectedColor
-                    ? `<p>Color: ${product.selectedColor}</p>`
-                    : ""
-                }
-                ${
-                  product.selectedStorage
-                    ? `<p>Storage: ${product.selectedStorage}</p>`
-                    : ""
-                }
-              </td>
-              <td style="border: 1px solid #ddd; padding: 8px;">${
-                product.quantity
-              }</td>
-              <td style="border: 1px solid #ddd; padding: 8px;">BDT ${
-                product.price
-              }</td>
-            </tr>
-          `
-            )
-            .join("")}
-        </tbody>
-      </table>
-    `;
-    pdfContainer.innerHTML += productsTable;
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <span><strong>Delivery Charge:</strong></span>
+                    <span>BDT ${deliveryCharge}</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 18px; font-weight: bold; margin-top: 15px; padding-top: 10px; border-top: 1px solid #eee;">
+                    <span><strong>Total:</strong></span>
+                    <span style="color: #000000;">BDT ${totalPrice}</span>
+                </div>
+            </div>
 
-    // Order Summary Footer
-    const orderSummary = `
-      <div style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px;">
-        <p><strong>Subtotal:</strong> BDT ${calculateSubtotal()}</p>
-        <p><strong>Delivery Charge:</strong> BDT ${deliveryCharge}</p>
-        <p style="font-size: 1.2em; font-weight: bold;"><strong>Total:</strong> BDT ${totalPrice}</p>
-      </div>
-    `;
-    pdfContainer.innerHTML += orderSummary;
+            </div>
 
+            <!-- Footer -->
+    <br><br><div style="color: #333; padding: 20px; text-align: center; font-size: 14px;">
+        <p style="margin: 0; font-weight: bold;">© 2025 <span style="color: #08ad74;">GoGadget</span>.</p>
+        </div>
+    `;
+
+    // Generate PDF
     html2canvas(pdfContainer, { scale: 2 }).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("p", "mm", "a4");
-      const imgWidth = 210;
+      const imgWidth = 210; // A4 width in mm
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
 
       let position = 0;
 
       pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
 
+      // Handle multi-page PDF
       const pageHeight = pdf.internal.pageSize.getHeight();
       if (imgHeight > pageHeight) {
         let remainingHeight = imgHeight - pageHeight;
@@ -631,7 +701,8 @@ const Checkout = ({ cart, updateCart, setOrderHistory }) => {
         }
       }
 
-      pdf.save("order_summary.pdf");
+      // Save with unique filename
+      pdf.save(fileName);
       document.body.removeChild(pdfContainer);
     });
   };
